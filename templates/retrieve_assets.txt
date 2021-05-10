@@ -1,0 +1,7 @@
+:heart: {name}
+:baby: Baby Type: {baby_type}
+:gem: Attribute(s): {attr}
+:woman: Mother: {mother}
+:man: Father: {father}
+:label: Current Price: {price}
+:sparkles: Owner: {owner}
