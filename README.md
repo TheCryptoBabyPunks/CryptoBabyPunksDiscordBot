@@ -38,12 +38,12 @@
 ### :books: Built With
 
 ```
-- beautifulsoup4 == 4.9.3
-- discord.py == 1.7.2
-- emoji == 1.2.0
-- nest_asyncio == 1.5.1
-- pandas == 1.0.1
-- requests == 2.25.1
+beautifulsoup4 == 4.9.3
+discord.py == 1.7.2
+emoji == 1.2.0
+nest_asyncio == 1.5.1
+pandas == 1.0.1
+requests == 2.25.1
 ```
 
 ### :art: Structure
