@@ -17,7 +17,6 @@
   * [Introduction](#introduction)
   * [Built With](#built-with)
   * [Structure](#structure)
-* [Author](#author)
 * [License](#license)
 
 ## :zap: About the Project
