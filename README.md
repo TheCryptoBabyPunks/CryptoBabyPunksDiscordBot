@@ -17,6 +17,9 @@
   * [Introduction](#introduction)
   * [Built With](#built-with)
   * [Structure](#structure)
+* [Quick Start](#quick-start)
+*   [Building the Docker Image](building-the-docker-image)
+*   [Running the Docker Image](running-the-docker-image
 * [License](#license)
 
 ## :zap: About the Project
@@ -64,6 +67,23 @@ requests == 2.25.1
 │   └── retrieve_assets.txt
 └── utils
     └── mapping.py
+```
+
+## :boom: Quick Start
+
+### :fire: Building the Docker :whale: Image
+
+```
+$ docker build . -t discord-bot
+```
+
+### :rocket: Running the Docker :whale: Image
+
+```
+$ docker run -it \
+  -e DISCORD_TOKEN="DISCORD_TOKEN" \
+  -e DISCORD_GUILD="DISCORD_GUILD" \
+discord-bot
 ```
 
 ## :open_book: License
