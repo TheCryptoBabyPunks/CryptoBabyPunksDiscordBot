@@ -9,4 +9,4 @@ class PunksFamilyAPI:
         url = self.path + '/' +code
         headers = { 'Authorization': 'Bearer '+Config.PF_TOKEN }
         response = requests.request("GET", url, headers=headers)
-        return response.json()
+        return response['data'].json()
