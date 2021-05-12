@@ -9,3 +9,7 @@ class Config:
         
     # local
     TEMPLATES_PATH = op.join(op.dirname(__file__), '../templates')
+
+    # Punks Family
+
+    PF_TOKEN = os.getenv('PF_TOKEN')
