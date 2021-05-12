@@ -26,7 +26,7 @@ class DiscordBotResponse:
                 attributes.append(f"{str(trait['value'])} ({trait['trait_count']/10}%)")
         return ', '.join(attributes)
                 
-    def find_price(self, q):
+    def get_price(self, q):
         coeff = 1000000000000000000
         try:
             if q["sell_orders"]==None:
@@ -40,12 +40,24 @@ class DiscordBotResponse:
             return 'Undisclosed'
     
     def trait_type(self, q, key):
-        for trait in q["traits"]:
-            if trait['trait_type']==key:
-                value = trait['value']
-                trait_count = trait['trait_count']/10
-                attributes = f"{value} ({trait_count}%)"
-        return attributes
+        try:
+            for trait in q["traits"]:
+                if trait['trait_type']==key:
+                    value = trait['value']
+                    trait_count = trait['trait_count']/10
+                    attributes = f"{value} ({trait_count}%)"
+            return attributes
+        except:
+            return ':shrug:'
+
+    def get_owner(self, q):
+        try:
+            owner = q["last_sale"]["transaction"]["from_account"]["user"]["username"]
+            if owner!=None:
+                return owner
+            return ':ghost:'
+        except:
+            return ':ghost:'
 
     def get_owner_from_web(self, q):
         url = q["permalink"]
@@ -57,7 +69,7 @@ class DiscordBotResponse:
             {'class': "AccountLinkreact__DivContainer-sc-4gdciy-0 hJExCK"}
         ).find('a')['href'].split('/')[-1]
         return owner
-
+        
     def catalogue(self, q):
         template = self.read_template('retrieve_assets')
         embed = discord.Embed(
@@ -71,8 +83,8 @@ class DiscordBotResponse:
                     attr=self.attributes(q),
                     mother=self.trait_type(q, 'Mother'),
                     father=self.trait_type(q, 'Father'),
-                    price=self.find_price(q),
-                    owner=self.get_owner_from_web(q)
+                    price=self.get_price(q),
+                    # owner=self.get_owner(q)
                 ))
         )
         embed.set_thumbnail(url=q["image_url"])
