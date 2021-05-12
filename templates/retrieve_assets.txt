@@ -4,4 +4,3 @@
 :woman: Mother: {mother}
 :man: Father: {father}
 :label: Current Price: {price}
-:sparkles: Owner: {owner}
