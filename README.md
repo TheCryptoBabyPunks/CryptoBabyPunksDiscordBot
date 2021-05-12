@@ -88,7 +88,7 @@ discord-bot
 ### 🖥️ Output
 
 <p align="center">
-  <img src="https://github.com/TheCryptoBabyPunks/CryptoBabyPunksDiscordBot/blob/main/static/output.png" width="50%" height="50%">
+  <img src="https://github.com/TheCryptoBabyPunks/CryptoBabyPunksDiscordBot/blob/main/static/bot_message.png" width="50%" height="50%">
 </p>
 
 ## :open_book: License
