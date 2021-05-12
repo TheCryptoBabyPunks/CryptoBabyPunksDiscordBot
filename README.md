@@ -20,6 +20,7 @@
 * [Quick Start](#quick-start)
   * [Building the Docker Image](building-the-docker-image)
   * [Running the Docker Image](running-the-docker-image)
+  * [Output](#output)
 * [License](#license)
 
 ## :zap: About the Project
