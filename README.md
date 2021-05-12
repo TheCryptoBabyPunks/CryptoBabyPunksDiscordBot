@@ -85,6 +85,11 @@ $ docker run -it \
   -e DISCORD_GUILD="DISCORD_GUILD" \
 discord-bot
 ```
+### 🖥️ Output
+
+<p align="center">
+  <img src="https://github.com/TheCryptoBabyPunks/CryptoBabyPunksDiscordBot/blob/main/static/output.png" width="50%" height="50%">
+</p>
 
 ## :open_book: License
 
