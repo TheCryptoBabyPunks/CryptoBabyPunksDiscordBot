@@ -4,8 +4,7 @@
 :woman: Mother: {mother}
 :man: Father: {father}
 :label: Current Price: {price}
-:family: Family:
 :child: Brothers: {brothers}
-:person_red_hair: Father Siblings: {father_children} ({father_count})
-:red_haired_woman: Mother Siblings: {mother_children} ({mother_count})
+:older_man: Father Siblings: {father_children} ({father_count})
+:older_woman: Mother Siblings: {mother_children} ({mother_count})
 :link: {link}
