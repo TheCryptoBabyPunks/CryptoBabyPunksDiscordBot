@@ -95,7 +95,7 @@ class DiscordBotResponse:
                     mother=self.trait_type(q, 'Mother'),
                     father=self.trait_type(q, 'Father'),
                     price=self.get_price(q),
-                    brothers=self.get_family(fam).brothers.code,
+                    brothers=self.get_family(fam, 'brothers'),
                     father_children=self.get_family(fam, 'fatherSiblings'),
                     father_count=fam['fatherSiblings']['count'],
                     mother_children=self.get_family(fam, 'motherSiblings'),
@@ -120,7 +120,7 @@ async def on_message(message):
         num = message.content.split('!')[-1]
         token_id = df.loc[df['num'] == num]['token_id'].values[0]
         q = app.assets(token_id)['assets'][0]
-        fam = family.get(num)
+        fam = family.get(num)['data']
         embed = bot.catalogue(q, fam) # get info from catalogue!
         await message.channel.send(embed=embed)
 
@@ -128,7 +128,7 @@ if __name__ == "__main__":
     
     df = pd.read_pickle('../data/cryptobabypunks.pkl')
     app = OpenSeaAPI()
-    bot = DiscordBotResponse()
     family = PunksFamilyAPI()
+    bot = DiscordBotResponse()
     client.run(Config.DISCORD_TOKEN)
 
