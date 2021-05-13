@@ -4,3 +4,10 @@
 :woman: Mother: {mother}
 :man: Father: {father}
 :label: Current Price: {price}
+:family: Family:
+Brothers: {brothers}
+Father Siblings: {father_children}
+count: {father_count}
+Mother Siblings: {mother_children}
+count: {mother_count}
+:link: {link}

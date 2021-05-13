@@ -7,6 +7,7 @@ import logging
 import nest_asyncio
 from opensea import OpenSeaAPI
 from config import Config
+from punksfamily import PunksFamilyAPI
 
 nest_asyncio.apply()
 client = discord.Client()
@@ -69,8 +70,18 @@ class DiscordBotResponse:
             {'class': "AccountLinkreact__DivContainer-sc-4gdciy-0 hJExCK"}
         ).find('a')['href'].split('/')[-1]
         return owner
-        
-    def catalogue(self, q):
+
+    def get_family(self, fam, key):
+        response = ''
+        if key == 'fatherSiblings' or key == 'motherSiblings':
+            for punk in fam[key]['children']:
+                response += punk['code']+' '
+        elif key == 'brothers':
+            for punk in fam[key]:
+                response += punk['code']+' '
+        return response
+
+    def catalogue(self, q, fam):
         template = self.read_template('retrieve_assets')
         embed = discord.Embed(
             title=f':link: {q["name"]}',
@@ -84,6 +95,12 @@ class DiscordBotResponse:
                     mother=self.trait_type(q, 'Mother'),
                     father=self.trait_type(q, 'Father'),
                     price=self.get_price(q),
+                    brothers=self.get_family(fam).brothers.code,
+                    father_children=self.get_family(fam, 'fatherSiblings'),
+                    father_count=fam['fatherSiblings']['count'],
+                    mother_children=self.get_family(fam, 'motherSiblings'),
+                    mother_count=fam['motherSiblings']['count'],
+                    link=fam['link']
                     # owner=self.get_owner(q)
                 ))
         )
@@ -103,7 +120,8 @@ async def on_message(message):
         num = message.content.split('!')[-1]
         token_id = df.loc[df['num'] == num]['token_id'].values[0]
         q = app.assets(token_id)['assets'][0]
-        embed = bot.catalogue(q) # get info from catalogue!
+        fam = family.get(num)
+        embed = bot.catalogue(q, fam) # get info from catalogue!
         await message.channel.send(embed=embed)
 
 if __name__ == "__main__":
@@ -111,5 +129,6 @@ if __name__ == "__main__":
     df = pd.read_pickle('../data/cryptobabypunks.pkl')
     app = OpenSeaAPI()
     bot = DiscordBotResponse()
+    family = PunksFamilyAPI()
     client.run(Config.DISCORD_TOKEN)
 
