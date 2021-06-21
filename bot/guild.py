@@ -32,11 +32,13 @@ class DiscordBotResponse:
         try:
             if q["sell_orders"]==None:
                 price = round(float(q['last_sale']['total_price'])/(coeff), 2)
-                symbol = q["last_sale"]["payment_token"]["symbol"]        
+                symbol = q["last_sale"]["payment_token"]["symbol"]
+                tag = 'Last sale price: '
             else: 
                 price = round(float(q["sell_orders"][0]["current_price"])/(coeff), 2)
                 symbol = q["sell_orders"][0]["payment_token_contract"]['symbol']
-            return str(price) + symbol
+                tag = 'Current Price: '
+            return tag + str(price) + symbol
         except:
             return 'Undisclosed'
     
@@ -77,8 +79,11 @@ class DiscordBotResponse:
             for punk in fam[key]['children']:
                 response += punk['code']+' '
         elif key == 'brothers':
-            for punk in fam[key]:
-                response += punk['code']+' '
+            if len(fam[key]) > 0:
+                for punk in fam[key]:
+                    response += punk['code']+' '
+            else:
+                response = 'none'
         return response
 
     def catalogue(self, q, fam):

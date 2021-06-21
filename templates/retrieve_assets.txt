@@ -3,7 +3,7 @@
 :gem: Attribute(s): {attr}
 :woman: Mother: {mother}
 :man: Father: {father}
-:label: Current Price: {price}
+:label: {price}
 :child: Brothers/Sisters: {brothers}
 :older_man: Father Siblings: {father_children} ({father_count})
 :older_woman: Mother Siblings: {mother_children} ({mother_count})
